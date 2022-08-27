@@ -1,4 +1,4 @@
-import { userDb } from "./mongo/schemas/user";
+import { userDb } from "./mongo/schemas/user.js";
 
 export class UserRepositoryMongoDb {
   async create(user) {
