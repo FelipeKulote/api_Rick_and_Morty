@@ -1,14 +1,16 @@
+import { userDb } from "./mongo/schemas/user";
+
 export class UserRepositoryMongoDb {
   async create(user) {
-    return user;
+    return await userDb.create(user);
   }
   async deleteUser(id) {
-    return id;
+    return await userDb.findOneAndDelete(id);
   }
-  async findUserById(id) {
-    return id;
+  async findById(id) {
+    return await userDb.findOne({ id: id });
   }
   async updateUser(user) {
-    return user;
+    return await userDb.findOneAndUpdate({ id: user.id }, user, { new: true });
   }
 }

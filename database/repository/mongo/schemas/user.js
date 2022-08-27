@@ -1,5 +1,5 @@
 import { model, Schema } from "mongoose";
-import { character } from "./character.js";
+import { characterDb } from "./character.js";
 
 const userSchema = new Schema({
   id: { type: String, required: true },
@@ -7,7 +7,7 @@ const userSchema = new Schema({
   email: { type: String, required: true },
   password: { type: String, required: true },
   image: { type: String, required: true },
-  characters: { type: [character], required: true },
+  characters: { type: [characterDb], required: true },
 });
 
-export const user = model("User", userSchema);
+export const userDb = model("User", userSchema);

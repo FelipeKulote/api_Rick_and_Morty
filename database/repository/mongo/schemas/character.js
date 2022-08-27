@@ -7,4 +7,4 @@ const characterSchema = new Schema({
   userId: { type: String, required: true },
 });
 
-export const character = model("Character", characterSchema);
+export const characterDb = model("Character", characterSchema);
