@@ -8,9 +8,6 @@ export class UpdateUserUseCase {
 
   async execute(userUpdated, userId) {
     const userToUpdate = await this.findUserById.execute(userId);
-    if (!userToUpdate) {
-      throw new Error("Not found a user with UserId:" + userId);
-    }
     const userModified = { ...userToUpdate, userUpdated };
     const userValidated = new UserEntity(userModified);
     userValidated.validate();

@@ -18,5 +18,11 @@
   "bugs": {
     "url": "https://github.com/FelipeKulote/api_Rick_and_Morty/issues"
   },
-  "homepage": "https://github.com/FelipeKulote/api_Rick_and_Morty#readme"
+  "homepage": "https://github.com/FelipeKulote/api_Rick_and_Morty#readme",
+  "dependencies": {
+    "mongoose": "^6.5.3"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.1"
+  }
 }
