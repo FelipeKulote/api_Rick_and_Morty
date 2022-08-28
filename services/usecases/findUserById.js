@@ -7,7 +7,7 @@ export class FindUserByIdUseCase {
     if (!userId) {
       throw new Error("User id sended is invalid");
     }
-    const userFinded = await this.userRepository.findById(userId);
+    const userFinded = await this.repository.findById(userId);
     if (!userFinded) {
       throw new Error("Not found a user with UserId:" + userId);
     }
