@@ -1,8 +1,8 @@
 import { MongoDbConnection } from "./database/repository/mongo/connection/connect.js";
 import { UserRepositoryMongoDb } from "./database/repository/userRepository.js";
 import { CreateUserUseCase } from "./services/usecases/user/createUser.js";
-import { FindUserByIdUseCase } from "./services/usecases/findUserById.js";
-import { UpdateUserUseCase } from "./services/usecases/updateUser.js";
+import { FindUserByIdUseCase } from "./services/usecases/user/findUserById.js";
+import { UpdateUserUseCase } from "./services/usecases/user/updateUser.js";
 
 const database = new MongoDbConnection();
 await database.ConnectDb().catch((err) => {
