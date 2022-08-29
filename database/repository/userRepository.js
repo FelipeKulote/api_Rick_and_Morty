@@ -13,4 +13,7 @@ export class UserRepositoryMongoDb {
   async updateUser(user) {
     return await userDb.findOneAndUpdate({ id: user.id }, user, { new: true });
   }
+  async findAll() {
+    return await userDb.find();
+  }
 }
