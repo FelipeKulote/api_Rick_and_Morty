@@ -1,4 +1,4 @@
-import { characterDb } from "./mongo/schemas/character";
+import { characterDb } from "./mongo/schemas/character.js";
 
 export class CharacterRepositoryMongoDB {
   async create(character) {

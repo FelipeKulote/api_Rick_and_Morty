@@ -1,4 +1,4 @@
-import { CharacterEntity } from "../../../entities/character";
+import { CharacterEntity } from "../../../entities/character.js";
 
 export class CreateCharacterUseCase {
   constructor(characterRepository, findUserById) {

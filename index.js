@@ -1,34 +1,25 @@
-import { MongoDbConnection } from "./database/repository/mongo/connection/connect.js";
-import { UserRepositoryMongoDb } from "./database/repository/userRepository.js";
-import { CreateUserUseCase } from "./services/usecases/user/createUser.js";
-import { FindUserByIdUseCase } from "./services/usecases/user/findUserById.js";
-import { UpdateUserUseCase } from "./services/usecases/user/updateUser.js";
+import express from "express";
+import cors from "cors";
 
-const database = new MongoDbConnection();
-await database.ConnectDb().catch((err) => {
-  console.log(err);
+import{ MongoDbConnection } from "./database/repository/mongo/connection/connect.js"
+import { makeCharacterFactory } from "./factories/character.js"
+import { makeUserFactory } from "./factories/user.js"
+
+const ConnectDb = new MongoDbConnection();
+await ConnectDb.ConnectDb();
+
+const app = express();
+const router = router();
+
+const user = makeUserFactory(router);
+const character = makeCharacterFactory(router);
+
+app.use(express.json());
+app.use(cors);
+
+app.use("/users", user.route());
+app.use("/character", character.route());
+
+app.listen(3000, () => {
+  console.log("Servidor rodando em: http://localhost:3000")
 });
-
-const repository = new UserRepositoryMongoDb();
-// const createUserUseCase = new CreateUserUseCase(repository);
-
-// const newUser = await createUserUseCase.execute({
-//   name: "Felipe",
-//   email: "testandoapi@mail.com",
-//   password: "senhasegura",
-//   image: "http://image.com",
-// });
-
-// console.log(newUser);
-
-const findByIdUseCase = new FindUserByIdUseCase(repository);
-const updateUserUseCase = new UpdateUserUseCase(repository, findByIdUseCase);
-
-const userUpdated = await updateUserUseCase.execute(
-  {
-    name: "Felipe Augusto",
-  },
-  "14b7f330-7ed7-4be7-8367-ec4b76878025"
-);
-
-console.log(userUpdated);
