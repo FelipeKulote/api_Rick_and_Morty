@@ -1,15 +1,26 @@
 export class CharacterRoutes {
-    constructor(controller, router) {
-        this.characterController = controller;
-        this.route = router;
-    }
+  constructor(controller, router) {
+    this.characterController = controller;
+    this.router = router;
+  }
 
-    route() {
-        router.get("/", this.characterController.find);
-        router.post("/create", this.characterController.create);
-        router.patch("/update/:id", this.characterController.update);
-        router.delete("/delete/:id", this.characterController.delete);
-        router.get("/find/:id", this.characterController.findById);
-        router.get("/search", this.characterController.findByName);
-    }
+  route() {
+    this.router.get("/", (req, res) => this.characterController.find(req, res));
+    this.router.post("/create", (req, res) =>
+      this.characterController.create(req, res)
+    );
+    this.router.patch("/update/:id", (req, res) =>
+      this.characterController.update(req, res)
+    );
+    this.router.delete("/delete/:id", (req, res) =>
+      this.characterController.delete(req, res)
+    );
+    this.router.get("/find/:id", (req, res) =>
+      this.characterController.findById(req, res)
+    );
+    this.router.get("/search", (req, res) =>
+      this.characterController.findByName(req, res)
+    );
+    return this.router;
+  }
 }
