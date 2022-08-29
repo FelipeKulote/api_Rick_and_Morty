@@ -16,9 +16,8 @@ const character = makeCharacterFactory(router);
 
 app.use(express.json());
 app.use(cors);
-
-app.use("/users", user.route());
 app.use("/character", character.route());
+app.use("/users", user.route());
 
 app.listen(3000, () => {
   console.log("Servidor rodando em: http://localhost:3000");
