@@ -4,6 +4,7 @@ import cors from "cors";
 import { MongoDbConnection } from "./database/repository/mongo/connection/connect.js";
 import { makeCharacterFactory } from "./factories/character.js";
 import { makeUserFactory } from "./factories/user.js";
+import {} from "./factories/auth.js";
 
 const ConnectDb = new MongoDbConnection();
 await ConnectDb.ConnectDb();
@@ -15,7 +16,7 @@ const user = makeUserFactory(router);
 const character = makeCharacterFactory(router);
 
 app.use(express.json());
-app.use(cors);
+app.use(cors());
 app.use("/character", character.route());
 app.use("/users", user.route());
 
