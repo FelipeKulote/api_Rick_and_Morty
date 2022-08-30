@@ -1,4 +1,4 @@
-import { JwtHelper } from "../auth/jwt";
+import { JwtHelper } from "../auth/jwt.js";
 import { UserRepositoryMongoDb } from "../database/repository/userRepository.js";
 import { FindUserByIdUseCase } from "../services/usecases/user/findUserById.js";
 

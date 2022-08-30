@@ -1,0 +1,28 @@
+{
+    "openapi": "3.0.0",
+    "info":{
+        "title": "API de personagens da série Rick and Morty",
+        "description": "API feita para projeto de estudo",
+        "termosOfService": "",
+        "contact": {
+            "email":"lipe_augustobq@hotmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:3000/",
+            "description": "API de teste e desenvolvimento"
+        },
+        {
+            "url": "",
+            "description": "API de produção"
+        }
+    ],
+    "path": {
+        "/user": {
+            
+        }
+    }
+
+}
