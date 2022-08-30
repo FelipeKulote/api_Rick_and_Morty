@@ -32,6 +32,7 @@ export class Controller {
   }
   async find(req, res) {
     try {
+      console.log("rodou!!");
     const response = await this.service.findAll();
     res.status(200).send(response);
     } catch (e) {
