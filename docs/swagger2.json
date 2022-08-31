@@ -1,0 +1,457 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API de personagens da série Rick and Morty",
+    "description": "API feita para projeto de estudo",
+    "termosOfService": "",
+    "contact": {
+      "email": "lipe_augustobq@hotmail.com"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "API de teste e desenvolvimento"
+    },
+    {
+      "url": "",
+      "description": "API de produção"
+    }
+  ],
+  "path": {
+    "/users/create": {
+      "post": {
+        "summary": "Cadastro de usuários",
+        "description": "Rota responsável por criar novo usuário",
+        "tags": ["User"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              },
+              "examples": {
+                "Users": {
+                  "value": {
+                    "name": "Rick",
+                    "username": "RickExample",
+                    "email": "example@gmail.com",
+                    "password": "senhasegura",
+                    "image": "https://image.com"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Criado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "summary": "Mostra os usuários",
+        "description": "Rota responsável por mostrar os usuários",
+        "tags": ["User"],
+        "security": [
+          {
+            "token": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Usuário não encontrado"
+          },
+          "401": {
+            "description": "Não autorizado"
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "summary": "Login na API do Rick and Morty",
+        "description": "Rota responsável pelo login",
+        "tags": ["Auth"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              },
+              "examples": {
+                "User": {
+                  "value": {
+                    "email": "example2@gmail.com",
+                    "password": "12345"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "token": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/characters/create": {
+      "post": {
+        "summary": "Criação de novos personagens",
+        "description": "Rota responsável por criar novos personagens",
+        "tags": ["Character"],
+        "security": [
+          {
+            "token": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Character"
+              },
+              "examples": {
+                "Tweet": {
+                  "value": {
+                    "user": "Felipe Augusto",
+                    "name": "Rick Sanchez",
+                    "image": "https://imagerick.com"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Criado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Character"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Não autorizado"
+          }
+        }
+      }
+    },
+    "/characters": {
+      "get": {
+        "summary": "Mostra as personagens",
+        "description": "Rota responsável por mostrar as personagens",
+        "tags": ["Character"],
+        "security": [
+          {
+            "token": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "type": "string"
+          }
+        ],
+        "response": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Character"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Não autorizado"
+          },
+          "400": {
+            "description": "Não encontrado"
+          }
+        }
+      }
+    },
+
+    "/characters/find/{id}": {
+      "get": {
+        "summary": "Search a character by id",
+        "description": "Route responsable for searching a character by id",
+        "tags": ["Character"],
+        "security": [
+          {
+            "token": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Character id for search",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Character"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/characters/update/{id}": {
+      "put": {
+        "summary": "Edit character by id",
+        "description": "Route responsable for editing a character by id",
+        "tags": ["Character"],
+        "security": [
+          {
+            "token": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Character id for search",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Character"
+              },
+              "examples": {
+                "Character": {
+                  "value": {
+                    "name": "Nake Terminator",
+                    "imageUrl": "https://rickandmortyapi.com/api/character/avatar/577.jpeg"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Character"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/characters/delete/{id}": {
+      "delete": {
+        "summary": "Delete a character by id",
+        "description": "Route responsable for deleting a character by id",
+        "tags": ["Character"],
+        "security": [
+          {
+            "token": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Character id for delete",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Character"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/characters/search": {
+      "get": {
+        "summary": "Search character by name",
+        "description": "Route responsable for searching a character by name",
+        "tags": ["Character"],
+        "security": [
+          {
+            "token": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "name",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Character"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "image": {
+            "type": "string"
+          }
+        }
+      },
+      "Character": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "image": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "token": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "security": {
+    "token": []
+  }
+}

@@ -20,7 +20,7 @@ const auth = makeAuthFactory(router);
 
 app.use(express.json());
 app.use(cors());
-app.use("/character", character.route());
+app.use("/characters", character.route());
 app.use("/users", user.route());
 app.use("/auth", auth.route());
 
