@@ -7,11 +7,11 @@ export class UserRoutes {
   }
 
   route() {
+    this.router.post("/create", (req, res) =>
+    this.userController.create(req, res)
+    );
     this.router.get("/", authentication, (req, res) =>
       this.userController.find(req, res)
-    );
-    this.router.post("/create", (req, res) =>
-      this.userController.create(req, res)
     );
     this.router.patch("/update/:id", authentication, (req, res) =>
       this.userController.update(req, res)

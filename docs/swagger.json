@@ -39,7 +39,7 @@
                     "email": "example@gmail.com",
                     "password": "senhasegura",
                     "image": "https://image.com",
-                    "characters": []
+                    "character": []
                   }
                 }
               }
