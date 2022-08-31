@@ -8,7 +8,6 @@ export async function authentication(req, res, next) {
 
   try {
     const userData = jwt.verifyToken(token.slice(7));
-    console.log(userData);
     const repository = new UserRepositoryMongoDb();
     const findUserById = new FindUserByIdUseCase(repository);
 

@@ -3,7 +3,7 @@ import cors from "cors";
 import swaggerUi from "swagger-ui-express";
 import * as dotenv from 'dotenv';
 dotenv.config();
-import swaggerDocuments from "./docs/swagger.json" assert {type: "json"};
+import swaggerDocuments from "./docs/swagger.json" assert {type: "json"};;
 import { MongoDbConnection } from "./database/repository/mongo/connection/connect.js";
 import { makeCharacterFactory } from "./factories/character.js";
 import { makeUserFactory } from "./factories/user.js";
