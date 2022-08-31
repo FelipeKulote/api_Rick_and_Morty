@@ -34,12 +34,10 @@
               "examples": {
                 "Users": {
                   "value": {
-                    "id": "",
                     "name": "Rick",
                     "email": "example@gmail.com",
                     "password": "senhasegura",
-                    "image": "https://image.com",
-                    "character": []
+                    "image": "https://image.com"
                   }
                 }
               }
