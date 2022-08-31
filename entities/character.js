@@ -4,7 +4,7 @@ export class CharacterEntity {
         this.id = character.id ?? randomUUID();
         this.name = character.name;
         this.image = character.image;
-        this.userId = userId;
+        this.userId = userId ?? " ";
     }
 
     validate() {

@@ -141,7 +141,7 @@
         }
       }
     },
-    "/characters/create": {
+    "/characters/create-characters": {
       "post": {
         "summary": "Criação de novos personagens",
         "description": "Rota responsável por criar novos personagens",
@@ -190,7 +190,7 @@
         }
       }
     },
-    "/characters": {
+    "/characters/all-characters": {
       "get": {
         "summary": "Mostra as personagens",
         "description": "Rota responsável por mostrar as personagens",
@@ -235,7 +235,7 @@
         }
       }
     },
-    "/characters/find/{id}": {
+    "/characters/find-characters/{id}": {
       "get": {
         "summary": "Procura o personagem pelo id",
         "description": "Rota responsável por localizar o character pelo id",
@@ -274,7 +274,7 @@
         }
       }
     },
-    "/characters/update/{id}": {
+    "/characters/update-characters/{id}": {
       "put": {
         "summary": "Editar um personagem pelo id",
         "description": "Rota responsável por editar o personagem pelo id",
@@ -327,7 +327,7 @@
         }
       }
     },
-    "/characters/delete/{id}": {
+    "/characters/delete-characters/{id}": {
       "delete": {
         "summary": "Deletar personagem pelo id",
         "description": "Rota responsável por deletar um personagem",
